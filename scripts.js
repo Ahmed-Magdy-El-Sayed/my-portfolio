@@ -3,11 +3,24 @@ const job = document.querySelector(".landing-page .left-content .job");
 const links = document.querySelector(".landing-page .left-content .contact-links");
 const frontSkills = document.querySelector(".landing-page .right-content .front");
 const backSkills = document.querySelector(".landing-page .right-content .back");
+const loader = document.querySelector(".loader");
+
 window.onload= ()=>{
+    loader.style.display = "none";
     myName.style = job.style = links.style = "transform: translateX(0)";
     frontSkills.style = "transform: scale(1); opacity: 1;";
     backSkills.style = "left: 0; opacity: 1;";
 };
+window.onresize = ()=>{
+    if(window.innerWidth > 700){
+        navMenu.classList.remove("open");
+    }
+    setTimeout(()=>{
+        [...document.querySelectorAll(".project .active")].forEach((ele) => {
+            ele.parentElement.style.height = ele.height+"px";
+        })
+    }, 1000)
+}
 
 const leftBtn = document.querySelector(".move-left");
 const rightBtn = document.querySelector(".move-right");
@@ -138,17 +151,6 @@ for (let i = 0; i < certificates.length; i++) {
         ele.onload = null;
     }
 })
-
-window.onresize = ()=>{
-    if(window.innerWidth > 700){
-        navMenu.classList.remove("open");
-    }
-    setTimeout(()=>{
-        [...document.querySelectorAll(".project .active")].forEach((ele) => {
-            ele.parentElement.style.height = ele.height+"px";
-        })
-    }, 1000)
-}
 
 const projectImgs = document.querySelectorAll(".project img");
 

@@ -150,18 +150,44 @@ svg{
     bottom: 0;
 }
 
+.loader{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 30vw;
+    height: 30vw;
+    border: 10px inset;
+    border-color: transparent dodgerblue;
+    outline: 5px double white;
+    z-index: 10;
+    border-radius: 50%;
+    animation: spin 0.5s linear infinite;
+    margin: auto;
+    translate: -50% -50%;
+}
+@keyframes spin {
+    0% {
+        transform: rotateZ(0deg);
+    }
+    100% {
+        transform: rotateZ(360deg);
+    }
+}
 /* Landing styles */
 .landing-page {
     width: 100%;
     height: 100%;
-    background-image: url('images/bg.png') !important;
-    background-size: cover;
-    image-orientation: none;
-    background-attachment: fixed;
+    background-image: none !important;
     overflow: hidden;
     position: absolute;
     top: 0;
     left: 0;
+}
+.landing-page .bg{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
 }
 .landing-page .dark-layer{
     width: 100%;

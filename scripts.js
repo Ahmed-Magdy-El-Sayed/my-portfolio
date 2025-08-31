@@ -91,6 +91,21 @@ topBtn.onclick = bottomBtn.onclick = e => {
     }, 1000)
 }
 
+let touchStart = [0,0];
+document.body.ontouchstart = e=>{touchStart = [e.changedTouches[0].clientX, e.changedTouches[0].clientY]}
+document.body.ontouchend = e=>{
+    const moveX = e.changedTouches[0].clientX -touchStart[0];
+    const moveXAbs = Math.abs(moveX);
+
+    const moveY = e.changedTouches[0].clientY -touchStart[1];
+    const moveYAbs = Math.abs(moveY);
+
+    if (moveXAbs < window.innerWidth/2 && moveYAbs < window.innerHeight/2) return null 
+    moveXAbs > moveYAbs?
+        moveX > 0? leftBtn.click() : rightBtn.click()
+    :   moveY > 0? topBtn.click() : bottomBtn.click()
+};
+
 const navBtns = document.querySelectorAll(".nav-menu span");
 [...navBtns].forEach(btn=>{
     btn.onclick = ()=>{
@@ -162,3 +177,25 @@ for (let i = 0; i < projectImgs.length; i++) {
         },1000);
     });
 }
+// handle touch scrolling manually
+const scrollContainer = [document.querySelector('.certificates-grid'), document.querySelector('.projects-container')];
+let isDragging = false;
+let prevY;
+scrollContainer[0].ontouchstart = scrollContainer[1].ontouchstart = (e) => {
+    isDragging = true;
+    prevY = e.touches[0].clientY;
+};
+
+scrollContainer[0].ontouchmove = scrollContainer[1].ontouchmove = (e) => {
+    if (!isDragging) return;
+    e.preventDefault();
+    
+    const deltaY = prevY - e.touches[0].clientY;
+    prevY = e.touches[0].clientY;
+
+    e.currentTarget.scrollTop += deltaY;
+};
+
+scrollContainer[0].ontouchend = scrollContainer[1].ontouchend = () => {
+    isDragging = false;
+};

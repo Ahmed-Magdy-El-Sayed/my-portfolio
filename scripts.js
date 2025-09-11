@@ -181,21 +181,23 @@ for (let i = 0; i < projectImgs.length; i++) {
 const scrollContainer = [document.querySelector('.certificates-grid'), document.querySelector('.projects-container')];
 let isDragging = false;
 let prevY;
-scrollContainer[0].ontouchstart = scrollContainer[1].ontouchstart = (e) => {
-    isDragging = true;
-    prevY = e.touches[0].clientY;
-};
+scrollContainer.forEach(container => {
+    container.ontouchstart = (e) => {
+        isDragging = true;
+        prevY = e.touches[0].clientY;
+    };
 
-scrollContainer[0].ontouchmove = scrollContainer[1].ontouchmove = (e) => {
-    if (!isDragging) return;
-    e.preventDefault();
-    
-    const deltaY = prevY - e.touches[0].clientY;
-    prevY = e.touches[0].clientY;
+    container.ontouchmove = (e) => {
+        if (!isDragging) return;
+        e.preventDefault();
+        
+        const deltaY = prevY - e.touches[0].clientY;
+        prevY = e.touches[0].clientY;
 
-    e.currentTarget.scrollTop += deltaY;
-};
+        e.currentTarget.scrollTop += deltaY;
+    };
 
-scrollContainer[0].ontouchend = scrollContainer[1].ontouchend = () => {
-    isDragging = false;
-};
+    container.ontouchend = () => {
+        isDragging = false;
+    };
+})

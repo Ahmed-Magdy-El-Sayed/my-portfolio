@@ -124,7 +124,7 @@ svg{
 .cube .page{
     width: 100%;
     position: absolute;
-    background-image: linear-gradient(1.35turn, #1460ab 50%, dodgerblue 50%)
+    background-image: linear-gradient(1.35turn, #000000b2 50%, dodgerblue 50%)
 }
 .cube .container{
     width: 100%;
@@ -170,15 +170,27 @@ svg{
     left: 50%;
     width: 30vw;
     height: 30vw;
-    border: 10px inset;
-    border-color: transparent dodgerblue;
-    outline: 5px double white;
     z-index: 10;
-    border-radius: 50%;
-    animation: spin 0.5s linear infinite;
     margin: auto;
     translate: -50% -50%;
-    background-color: white;
+    background-color: #0000009e;
+    border-radius: 50%;
+}
+.loader .spinner{
+    width: 100%;
+    height: 100%;
+    border: 15px inset;
+    border-color: transparent dodgerblue;
+    outline: 5px double white;
+    border-radius: 50%;
+    animation: spin 0.5s linear infinite;
+}
+.loader .text{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin: auto;
+    translate: -50% -50%;
 }
 @keyframes spin {
     0% {

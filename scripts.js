@@ -1,13 +1,14 @@
 const myName = document.querySelector(".landing-page .left-content .name");
 const job = document.querySelector(".landing-page .left-content .job");
 const links = document.querySelector(".landing-page .left-content .contact-links");
+const mindset = document.querySelector(".landing-page .left-content .mindset-card");
 const frontSkills = document.querySelector(".landing-page .right-content .front");
 const backSkills = document.querySelector(".landing-page .right-content .back");
 const loader = document.querySelector(".loader");
 
 window.onload= ()=>{
     loader.style.display = "none";
-    myName.style = job.style = links.style = "transform: translateX(0)";
+    myName.style = job.style = links.style = mindset.style = "transform: translateX(0)";
     frontSkills.style = "transform: scale(1); opacity: 1;";
     backSkills.style = "left: 0; opacity: 1;";
     [...document.querySelectorAll(".project .active")].forEach((ele) => {

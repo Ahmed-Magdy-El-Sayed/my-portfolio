@@ -334,6 +334,12 @@ h2 {
     100% {transform: translateY(40px) scale(1) }
 }
 
+@keyframes jump-mobile {
+    0% {transform: translateY(30px) scale(1) }
+    50% {transform: translateY(30px) scale(1.7) }
+    100% {transform: translateY(30px) scale(1) }
+}
+
 @keyframes spin {
     to { transform: rotate(360deg); }
 }
@@ -606,6 +612,16 @@ h2 {
     }
 }
 @media (max-width:768px){
+    .loader .dot{
+        transform: translateY(30px);
+        animation-name: jump-mobile;
+    }
+    .loader .dot1{
+        margin-left: -15px;
+    }
+    .loader .dot3{
+        margin-left: 15px;
+    }
     .landing-page::before {
         top: 10%;
         left: 50%;
@@ -838,7 +854,7 @@ h2 {
 }
 
 .project-details .features li::before {
-    content: "Ã¢Å“â€œ";
+    content: "\2714";
     position: absolute;
     left: 0;
     color: #38bdf8;
